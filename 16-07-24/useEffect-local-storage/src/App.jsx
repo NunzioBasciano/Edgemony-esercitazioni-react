@@ -2,25 +2,30 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/card/Card.jsx'
 
-
 function App() {
 
+  const [count, setCount] = useState(1);
   const [message, setMessage] = useState(1);
-  const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
-    setIsClicked(!isClicked);
+    setCount(count + 1);
   }
 
-  const handleMessage = async () => {
+  const getMessage = async () => {
 
     try {
       const data = await fetch(
-        'https://api.adviceslip.com/advice'
+        `https://api.adviceslip.com/advice/${count}`
       );
       const res = await data.json();
       const advice = res.slip
-      setMessage(advice);
+      if (advice) {
+        setMessage(advice);
+        console.log(advice);
+      } else {
+        setMessage({ id: 'Id not fuond!', advice: 'Advice not fuond!' });
+      }
+
 
     } catch (error) {
 
@@ -28,19 +33,35 @@ function App() {
     }
   }
 
+  const setLocalStorage = () => {
+    localStorage.setItem('advice', JSON.stringify(message));
+  }
+
+  const geLocalStorage = () => {
+    const favorites = localStorage.getItem('advice');
+  }
+
   useEffect(() => {
-    handleMessage();
-  }, [isClicked])
+    geLocalStorage();
+    getMessage();
+  }, [])
+
+
+  /* La chiamata verrà effettuata al primo render e ad ogni variazione del messaggio */
+  useEffect(() => {
+    getMessage();
+    /* L'aggiornamento nel local storage avviene con ritardo rispetto al render del messaggio */
+    setLocalStorage();
+  }, [count])
 
   return (
-
-    <Card
-      title={message.id}
-      description={message.advice}
-      onClick={handleClick}
-      isClicked={isClicked}
-      setIsClicked={setIsClicked}
-    />
+    <>
+      <Card
+        title={message.id}
+        description={message.advice}
+        onClick={handleClick}
+      />
+    </>
   )
 }
 
