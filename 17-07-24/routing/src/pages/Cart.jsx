@@ -12,16 +12,22 @@ function Cart() {
     }, [])
 
 
+
     return (
         <>
-
             <div>Ciao sono la pagina Cart</div>
             {products ? products.map(product => {
+
+                const imagesArray = JSON.parse(product.images);
+                const firstImage = imagesArray[0]
+
                 return (
                     <Card
                         key={product.id}
                         title={product.title}
                         description={product.description}
+                        price={product.price}
+                        image={firstImage}
                     />
                 )
             }) : null}

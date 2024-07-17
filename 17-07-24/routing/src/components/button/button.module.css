@@ -1,0 +1,12 @@
+.button {
+    all: unset;
+    background-color: violet;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    padding: 1rem 5rem;
+    font-weight: 700;
+}

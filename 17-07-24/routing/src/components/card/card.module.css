@@ -1,5 +1,4 @@
 .card {
-    background-color: #00474b;
     margin: 1rem;
     width: 90%;
     border-radius: 16px;
@@ -7,37 +6,42 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 2rem;
-    gap: 1rem;
+    gap: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: transform 0.3s ease;
 }
 
-.card h3 {
-    color: #ffffff;
+.card:hover {
+    transform: scale(1.03);
 }
 
-.card p {
-    color: #27c1ac;
+.card_image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 10px solid violet;
+    transition: transform 0.3s ease-out, border 0.3s ease-out;
+    transition-delay: 0.3s;
 }
 
-/* .button {
-    background-color: #0d686d;
-    border: none;
-    color: #ffffff;
-    min-width: 90%;
-    margin-top: 1rem;
-    border-radius: 16px;
-    padding: 0.4rem 1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    align-self: center;
+.card_image:hover {
+    transform: scale(1.05);
 
 }
 
-.button:hover {
-    transition-delay: 0.1s;
-    cursor: pointer;
-    background-color: #ffffff;
-    color: #0d686d;
-} */
+.card_title {
+    text-align: center;
+    color: orange;
+    text-transform: capitalize;
+}
+
+.card_price {
+    color: blue;
+    font-weight: 900;
+    text-shadow: rgba(0, 0, 0, 0.35) 0px 1px 15px;
+}
 
 @media screen and (min-width: 1024px) {
 
