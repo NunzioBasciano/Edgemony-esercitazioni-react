@@ -1,0 +1,8 @@
+@media screen and (min-width: 1024px) {
+
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2rem 6rem;
+    }
+}
