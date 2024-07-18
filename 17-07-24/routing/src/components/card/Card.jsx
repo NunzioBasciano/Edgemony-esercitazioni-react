@@ -1,19 +1,18 @@
-import styles from './card.module.css'
-import Button from '../button/Button';
+import React from 'react';
+import styles from './card.module.css';
+
 
 function truncateText(text, limit = 200) {
-
     if (text.length > limit) {
         return text.slice(0, limit) + '...';
     }
     return text;
 }
 
-
 function Card(props) {
+
     const formattedDescription = truncateText(props.description);
     const formattedPrice = props.price.toFixed(2);
-
 
     return (
         <div className={styles.card} key={props.id}>
@@ -22,8 +21,13 @@ function Card(props) {
             <p>{formattedDescription}</p>
             <p className={styles.card_price}>€ {formattedPrice}</p>
 
+            {props.children && (
+                <div >
+                    {props.children}
+                </div>
+            )}
         </div>
-    )
+    );
 }
 
-export default Card
+export default Card;

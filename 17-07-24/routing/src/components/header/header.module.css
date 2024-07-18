@@ -19,6 +19,13 @@
     color: black;
 }
 
+.active {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+}
+
 
 .styles.link:hover {
     cursor: pointer;

@@ -3,6 +3,7 @@ import IconLogo from '../icons/IconLogo';
 import IconCart from '../icons/IconCart';
 import UserIcon from '../icons/UserIcon';
 import avatarImage from '../../assets/images/image-avatar.png';
+import { NavLink } from 'react-router-dom';
 
 // Definizione di un array di oggetti che rappresentano i link del menu di navigazione.
 const menuLink = [
@@ -12,23 +13,20 @@ const menuLink = [
     { name: 'About', path: '/about' }
 ]
 
-
-
-
 function Header() {
 
     return (
         <header className={styles.header}>
-            <IconLogo />
+            <NavLink to={'/'}><IconLogo /></NavLink>
             <ul className={styles.header_links}>
                 {menuLink.map((item, index) => (
                     <li key={index}>
-                        <a className={styles.link} href={item.path}>{item.name}</a>
+                        <NavLink className={({ isActive }) => (isActive ? styles.active : styles.link)} to={item.path}>{item.name}</NavLink>
                     </li>
                 ))}
             </ul >
             <span className={styles.container_user}>
-                <a href={'/cart'}><IconCart fill={'black'} /></a>
+                <NavLink to={'/cart'}><IconCart fill={'black'} /></NavLink>
                 <UserIcon
                     image={avatarImage}
                     className={styles.user_icon}

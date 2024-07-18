@@ -1,25 +1,20 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import Card from '../components/card/Card'
+import React from 'react';
+import { useEffect, useState } from 'react';
+import Card from '../components/card/Card';
 
 function Cart() {
-
-    const [products, setProducts] = useState(null)
+    const [products, setProducts] = useState(null);
 
     useEffect(() => {
-        const products = JSON.parse(localStorage.getItem('products'));
-        setProducts(products)
-    }, [])
-
-
+        const storedProducts = JSON.parse(localStorage.getItem('products'));
+        setProducts(storedProducts);
+    }, []);
 
     return (
         <>
             <div>Ciao sono la pagina Cart</div>
-            {products ? products.map(product => {
-
-                const imagesArray = JSON.parse(product.images);
-                const firstImage = imagesArray[0]
+            {products ? products.map((product) => {
+                const firstImage = product.images[0];
 
                 return (
                     <Card
@@ -29,10 +24,10 @@ function Cart() {
                         price={product.price}
                         image={firstImage}
                     />
-                )
-            }) : null}
+                );
+            }) : <p>No products in the cart.</p>}
         </>
-    )
+    );
 }
 
-export default Cart
+export default Cart;
