@@ -1,16 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import Card from '../components/card/Card';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import styles from '../app.module.css';
-import Button from '../components/button/Button'
+import Button from '../components/button/Button';
+import { useProductContext } from '../components/providers/ProductContext';
 
 function ProductPage() {
     const [product, setProduct] = useState(null);
     const { id } = useParams();
-
-    console.log(useParams()); // Mostra l'ID per il debug
+    const { cart, setCart } = useProductContext();
 
     const getProduct = async () => {
         try {
@@ -24,13 +21,16 @@ function ProductPage() {
 
     useEffect(() => {
         getProduct();
-    }, []);
+    }, [id]);
+
+    const addToCart = (product) => {
+        setCart([...cart, product]);
+    };
 
     if (!product) {
-        return <p>Loading...</p>; // Mostra un messaggio di caricamento
+        return <p>Loading...</p>;
     }
 
-    // Verifica che product.images esista e contenga almeno un elemento
     const firstImage = product.images && product.images.length > 0 ? product.images[0] : '';
 
     return (
@@ -42,9 +42,7 @@ function ProductPage() {
                 price={product.price}
                 image={firstImage}
             >
-                <Link to={`product/${product.id}`} className={styles.link}>
-                    <Button text="Aggiungi a preferiti" />
-                </Link>
+                <Button text="Aggiungi a preferiti" onClick={() => addToCart(product)} />
             </Card>
         </div>
     );
