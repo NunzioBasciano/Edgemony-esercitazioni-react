@@ -1,6 +1,6 @@
 export const labels = {
     productTableName: 'Name',
-    totalTableImage: 'Image',
+    /* totalTableImage: 'Image', */
     totalTableDescription: 'Description',
     totalTableBarcode: 'Barcode',
     totalTableCost: 'Cost',
