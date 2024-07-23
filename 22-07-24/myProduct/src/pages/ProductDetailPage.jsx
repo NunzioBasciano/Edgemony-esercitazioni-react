@@ -19,7 +19,6 @@ function ProductDetailPage() {
             setIsLoading(false);
 
         } catch (error) {
-            console.log(error);
             setIsLoading(false);
             setIsError(prevState => { return { ...prevState, message: error.message, isError: true } })
         }
