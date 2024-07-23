@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { labels } from "./assets/data/labels"
 import { getProductList } from './api/productClient'
+import { NavLink } from 'react-router-dom'
+
 
 
 
@@ -44,10 +46,11 @@ function App() {
             <thead className="ltr:text-left rtl:text-left">
               <tr>
                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.productTableName}</th>
-                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.totalTableBarcode}</th>
-                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.totalTableCost}</th>
-                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.priceTablePrice}</th>
-                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.quantityTableQuantity}</th>
+                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.productTableBrand}</th>
+                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.productTableBarcode}</th>
+                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.productTableCost}</th>
+                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.productTablePrice}</th>
+                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{labels.productTableQuantity}</th>
                 <th className="px-4 py-2"></th>
               </tr>
             </thead>
@@ -59,17 +62,18 @@ function App() {
 
                   <tr key={product.id}>
                     <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.name}</td>
+                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.brand}</td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.barcode}</td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">€{product.cost}</td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">€{product.price}</td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.quantity}</td>
                     <td className="whitespace-nowrap px-4 py-2">
-                      {/* <a
-                    href="#"
-                    className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-                  >
-                    View
-                  </a> */}
+                      <NavLink
+                        to={`/products/${product.id}`}
+                        className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                      >
+                        {labels.productTableDetail}
+                      </NavLink>
                     </td>
                   </tr>
                 )
