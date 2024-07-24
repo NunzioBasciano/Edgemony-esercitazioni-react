@@ -42,13 +42,13 @@ function App() {
     <>
 
 
-      <div className="flex justify-center">
-        <main className="w-[1200px]">
+      <div className="flex justify-center w-full">
+        <main className="w-full">
           <div className="p-8">
             <h1 className="">{labels.productList}</h1>
           </div>
-          <div className="flex gap-4 items-center">
-            <h2>{labels.filterProductTitle}</h2>
+          <div className="flex gap-4 items-centre justify-end p-4">
+            <h2 className="text-right">{labels.filterProductTitle}</h2>
             <input
               className="p-1 border border-black border-solid"
               type="text"
@@ -82,10 +82,10 @@ function App() {
                     <tr key={product.id}>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.name}</td>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.brand}</td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.barcode}</td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">€{product.cost}</td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">€{product.price}</td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.quantity}</td>
+                      <td className="whitespace-nowrap px-1 py-2 text-gray-700 text-center">{product.barcode}</td>
+                      <td className="whitespace-nowrap px-1 py-2 text-gray-700 text-center">€{product.cost}</td>
+                      <td className="whitespace-nowrap px-1 py-2 text-gray-700 text-center">€{product.price}</td>
+                      <td className="whitespace-nowrap px-1 py-2 text-gray-700 text-center">{product.quantity}</td>
                       <td className="whitespace-nowrap px-4 py-2">
                         <NavLink
                           to={`/products/${product.id}`}

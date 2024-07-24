@@ -10,7 +10,7 @@ export const labels = {
 
 
     productList: 'Product List',
-    filterProductTitle: 'Filter product by name:',
+    filterProductTitle: 'Filter product by name, brand or scan barcode:',
     filterProductPlaceHolder: 'Filter by name',
     isLoading: 'is Loading...',
     errorHuHo: "Hu-oh!"

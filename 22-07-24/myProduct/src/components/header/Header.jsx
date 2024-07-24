@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 // Definizione di un array di oggetti che rappresentano i link del menu di navigazione.
 const menuLink = [
     { name: 'Home', path: '/' },
-    { name: 'Hair care', path: '/haircare' },
+    { name: 'Add product', path: '/create' },
     { name: 'Hair color', path: '/haircolor' },
     { name: 'Beauty', path: '/beauty' }
 ]
@@ -26,7 +26,7 @@ function Header() {
                 ))}
             </ul >
             <span className={styles.container_user}>
-                <NavLink to={'/cart'}><IconCart fill={'black'} /></NavLink>
+                {/* <NavLink to={'/cart'}><IconCart fill={'black'} /></NavLink> */}
                 <UserIcon
                     image={avatarImage}
                     className={styles.user_icon}
