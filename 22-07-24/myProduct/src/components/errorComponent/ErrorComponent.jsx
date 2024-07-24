@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ErrorComponent(props) {
+function ErrorComponent({ message, children }) {
     return (
         < div className="grid h-screen place-content-center bg-white px-4" >
             <div className="text-center">
@@ -37,7 +37,8 @@ function ErrorComponent(props) {
 
                 <h1 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Uh-oh!</h1>
 
-                <p className="mt-4 text-gray-500">{props.message}</p>
+                <p className="mt-4 text-gray-500">{message.message}</p>
+                {children}
             </div>
         </div >
     )
