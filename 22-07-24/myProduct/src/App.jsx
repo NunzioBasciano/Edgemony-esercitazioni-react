@@ -10,6 +10,7 @@ function App() {
 
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filter, setFilter] = useState('');
 
   const getProducts = async () => {
     try {
@@ -21,6 +22,10 @@ function App() {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  const handleChange = (event) => {
+    setFilter(event.target.value.toLowerCase());
   }
 
   useEffect(() => {
@@ -42,6 +47,16 @@ function App() {
           <div className="p-8">
             <h1 className="">{labels.productList}</h1>
           </div>
+          <div className="flex gap-4 items-center">
+            <h2>{labels.filterProductTitle}</h2>
+            <input
+              className="p-1 border border-black border-solid"
+              type="text"
+              onChange={handleChange}
+              placeholder="Filter by name"
+              value={filter}
+            />
+          </div>
           <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
             <thead className="ltr:text-left rtl:text-left">
               <tr>
@@ -57,27 +72,31 @@ function App() {
 
             <tbody className="divide-y divide-gray-200">
 
-              {productList.map((product) => {
-                return (
+              {productList
+                .filter(product => product.name.toLowerCase().includes(filter) ||
+                  product.brand.toLowerCase().includes(filter) ||
+                  product.barcode.toLowerCase().includes(filter))
+                .map((product) => {
+                  return (
 
-                  <tr key={product.id}>
-                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.name}</td>
-                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.brand}</td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.barcode}</td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">€{product.cost}</td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">€{product.price}</td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.quantity}</td>
-                    <td className="whitespace-nowrap px-4 py-2">
-                      <NavLink
-                        to={`/products/${product.id}`}
-                        className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-                      >
-                        {labels.productTableDetail}
-                      </NavLink>
-                    </td>
-                  </tr>
-                )
-              })
+                    <tr key={product.id}>
+                      <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.name}</td>
+                      <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.brand}</td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.barcode}</td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">€{product.cost}</td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">€{product.price}</td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.quantity}</td>
+                      <td className="whitespace-nowrap px-4 py-2">
+                        <NavLink
+                          to={`/products/${product.id}`}
+                          className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                        >
+                          {labels.productTableDetail}
+                        </NavLink>
+                      </td>
+                    </tr>
+                  )
+                })
               }
 
 
