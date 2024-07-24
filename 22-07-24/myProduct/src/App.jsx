@@ -37,7 +37,7 @@ function App() {
   }, [productList])
 
 
-  if (isLoading) return <p>is Loading...</p>
+  if (isLoading) return <p>{labels.isLoading}</p>
   return (
     <>
 
@@ -53,7 +53,7 @@ function App() {
               className="p-1 border border-black border-solid"
               type="text"
               onChange={handleChange}
-              placeholder="Filter by name"
+              placeholder={labels.filterProductPlaceHolder}
               value={filter}
             />
           </div>
