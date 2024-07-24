@@ -9,7 +9,10 @@ export const labels = {
     productTableDetail: 'Detail',
 
 
-    productList: 'Product List'
-
+    productList: 'Product List',
+    filterProductTitle: 'Filter product by name:',
+    filterProductPlaceHolder: 'Filter by name',
+    isLoading: 'is Loading...',
+    errorHuHo: "Hu-oh!"
 
 }
