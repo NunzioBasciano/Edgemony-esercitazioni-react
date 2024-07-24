@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { getProductDetail } from "../api/productClient";
 import { useEffect, useState } from "react";
 import ProductSkeleton from '../pages/ProductSkeleton'
-import ErrorPage from "../pages/ErrorPage";
+import ErrorComponent from "../components/errorComponent/ErrorComponent";
 
 
 function ProductDetailPage() {
@@ -37,7 +37,7 @@ function ProductDetailPage() {
     if (isLoading) return <ProductSkeleton />
     if (isError.isError)
         return (
-            <ErrorPage message={isError.message} />
+            <ErrorComponent message={isError.message} />
         )
 
     return (

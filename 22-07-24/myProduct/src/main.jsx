@@ -5,11 +5,13 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import DefaultLayout from './layouts/DefaultLayout.jsx'
 import ProductDetailPage from './pages/ProductDetailPage.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <DefaultLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { path: '/', element: <App /> },
       { path: "products/:id", element: <ProductDetailPage /> }

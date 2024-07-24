@@ -1,8 +1,8 @@
 import styles from './header.module.css';
-import IconLogo from '../icons/IconLogo';
-import IconCart from '../icons/IconCart';
-import UserIcon from '../icons/UserIcon';
-import avatarImage from '../assets/images/image-avatar.png';
+import IconLogo from '../../icons/IconLogo';
+import IconCart from '../../icons/IconCart';
+import UserIcon from '../../icons/UserIcon';
+import avatarImage from '../../assets/images/image-avatar.png';
 import { NavLink } from 'react-router-dom';
 
 // Definizione di un array di oggetti che rappresentano i link del menu di navigazione.
