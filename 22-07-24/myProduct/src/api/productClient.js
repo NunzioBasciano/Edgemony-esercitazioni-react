@@ -31,34 +31,36 @@ export const getProductList = () => {
 
 
 
-/* export const getProductDetail = () => {
-    return new Promise((reject) => {
-        setTimeout(() => {
-            reject({ message: 'Non è stato possibile caricare i dettagli del prodotto' }) */
-/*  resolve(() => {
-     return {
-         id: 1,
-         barcode: "1234567890",
-         brand: "Revlon professional",
-         name: "Uniq one",
-         image: "https://www.hairbodystore.com/7013-large_default/rp-unique-one-classico-150-ml.jpg",
-         description: `TRATTAMENTO PER CAPELLI TUTTO IN UNO Innovazione mondiale nella cura dei capelli. La prima maschera spray senza risciacquo disponibile sul mercato che offre ai capelli 10 BENEFICI fondamentali di cui hanno bisogno.`,
-         cost: 3.4,
-         price: 12.9,
-         quantity: 12,
-     }
- }) */
-/*         }, 1000)
-    })
-} */
-
 export const getProductDetail = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+/*             reject({ message: 'Non è stato possibile caricare i dettagli del prodotto' })
+ */            resolve(() => {
+            return {
+                id: 1,
+                barcode: "1234567890",
+                brand: "Revlon professional",
+                name: "Uniq one",
+                image: "https://www.hairbodystore.com/7013-large_default/rp-unique-one-classico-150-ml.jpg",
+                description: `TRATTAMENTO PER CAPELLI TUTTO IN UNO Innovazione mondiale nella cura dei capelli. La prima maschera spray senza risciacquo disponibile sul mercato che offre ai capelli 10 BENEFICI fondamentali di cui hanno bisogno.`,
+                cost: 3.4,
+                price: 12.9,
+                quantity: 12,
+            }
+        })
+        }, 1000)
+    })
+}
+
+// simulazione reject per test ErrorPage
+
+/* export const getProductDetail = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             reject({ message: 'Non è stato possibile caricare i dettagli del prodotto' });
         }, 1000);
     });
-};
+}; */
 
 // quando i dati del backend saranno pronti potremo sostituire la funzione di sopra con questa
 
