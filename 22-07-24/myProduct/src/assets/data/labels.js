@@ -8,6 +8,7 @@ export const labels = {
     productTableQuantity: 'Quantity',
     productTableDetail: 'Detail',
     productTableEdit: 'Edit',
+    productTableDelete: 'Delete',
 
 
 

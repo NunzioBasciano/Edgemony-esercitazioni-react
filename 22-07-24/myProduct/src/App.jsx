@@ -3,9 +3,6 @@ import { labels } from "./assets/data/labels"
 import { getProductList } from './api/productClient'
 import { NavLink } from 'react-router-dom'
 
-
-
-
 function App() {
 
   const [productList, setProductList] = useState([]);
@@ -40,8 +37,6 @@ function App() {
   if (isLoading) return <p>{labels.isLoading}</p>
   return (
     <>
-
-
       <div className="flex justify-center w-full">
         <main className="w-full">
           <div className="p-8">
@@ -78,7 +73,6 @@ function App() {
                   product.barcode.toLowerCase().includes(filter))
                 .map((product) => {
                   return (
-
                     <tr key={product.id}>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.name}</td>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{product.brand}</td>
@@ -96,18 +90,17 @@ function App() {
                           </NavLink>
                           <NavLink
                             to={`/edit/${product.id}`}
-                            className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-yellow-700"
+                            className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
                           >
                             {labels.productTableEdit}
                           </NavLink>
+
                         </div>
                       </td>
                     </tr>
                   )
                 })
               }
-
-
             </tbody>
           </table>
         </main>

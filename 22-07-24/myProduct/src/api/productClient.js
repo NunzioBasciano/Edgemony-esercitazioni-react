@@ -83,6 +83,7 @@ export const editProduct = (body) => {
     })
 }
 
+
 // quando i dati del backend saranno pronti potremo sostituire la funzione di sopra con questa
 
 /* export const getProductList = async () => {
