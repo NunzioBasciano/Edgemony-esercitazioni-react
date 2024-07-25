@@ -50,15 +50,16 @@ export const getProductDetail = () => {
     })
 }
 
+
 // simulazione reject per test ErrorPage
 
 /* export const getProductDetail = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             reject({ message: 'Non è stato possibile caricare i dettagli del prodotto' });
-        }, 1000);
-    });
-}; */
+            }, 1000);
+            });
+            }; */
 
 export const addProduct = (body) => {
     return new Promise((resolve) => {
@@ -68,6 +69,18 @@ export const addProduct = (body) => {
             );
         }, 1000);
     });
+}
+
+export const editProduct = (body) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(
+                {
+                    ...body,
+                }
+            )
+        }, 3000)
+    })
 }
 
 // quando i dati del backend saranno pronti potremo sostituire la funzione di sopra con questa

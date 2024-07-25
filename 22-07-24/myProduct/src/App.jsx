@@ -87,12 +87,20 @@ function App() {
                       <td className="whitespace-nowrap px-1 py-2 text-gray-700 text-center">€{product.price}</td>
                       <td className="whitespace-nowrap px-1 py-2 text-gray-700 text-center">{product.quantity}</td>
                       <td className="whitespace-nowrap px-4 py-2">
-                        <NavLink
-                          to={`/products/${product.id}`}
-                          className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-                        >
-                          {labels.productTableDetail}
-                        </NavLink>
+                        <div className="flex gap-4">
+                          <NavLink
+                            to={`/products/${product.id}`}
+                            className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                          >
+                            {labels.productTableDetail}
+                          </NavLink>
+                          <NavLink
+                            to={`/edit/${product.id}`}
+                            className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-yellow-700"
+                          >
+                            {labels.productTableEdit}
+                          </NavLink>
+                        </div>
                       </td>
                     </tr>
                   )

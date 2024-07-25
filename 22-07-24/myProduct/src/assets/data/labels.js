@@ -7,6 +7,8 @@ export const labels = {
     productTablePrice: 'Price',
     productTableQuantity: 'Quantity',
     productTableDetail: 'Detail',
+    productTableEdit: 'Edit',
+
 
 
     productList: 'Product List',
