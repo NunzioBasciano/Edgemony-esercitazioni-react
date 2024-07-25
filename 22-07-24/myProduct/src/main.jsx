@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import DefaultLayout from './layouts/DefaultLayout.jsx'
 import ProductDetailPage from './pages/ProductDetailPage.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
+import Create from './pages/Create.jsx'
+import Edit from './pages/Edit.jsx'
 
 const router = createBrowserRouter([
   {
@@ -14,7 +16,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: '/', element: <App /> },
-      { path: "products/:id", element: <ProductDetailPage /> }
+      { path: "products/:id", element: <ProductDetailPage /> },
+      { path: 'create', element: <Create /> },
+      { path: 'edit/:id', element: <Edit /> }
 
     ],
   },
