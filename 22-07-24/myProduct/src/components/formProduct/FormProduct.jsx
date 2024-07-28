@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function FormProduct({ value, onSubmit, isError }) {
     const initialState = {
@@ -15,16 +15,21 @@ function FormProduct({ value, onSubmit, isError }) {
     const [form, setForm] = useState(initialState)
     const [isLoading, setIsLoading] = useState(false);
 
-    const nameValidation = !form.name.length;
-    const brandValidation = !form.brand.length;
-    const barcodeValidation = !form.barcode.length;
-    const imageValidation = !form.image.length;
-    const descriptionValidation = !form.description.length;
-    const costValidation = !form.cost.length;
-    const priceValidation = !form.price.length;
-    const quantityValidation = !form.quantity.length;
+    const nameValidation = form.name.length > 0;
+    const brandValidation = form.brand.length > 0;
+    const barcodeValidation = form.barcode.toString().length > 0;
+    const imageValidation = form.image.length > 0;
+    const descriptionValidation = form.description.length > 0;
+    const costValidation = form.cost.toString().length > 0;
+    const priceValidation = form.price.toString().length > 0;
+    const quantityValidation = form.quantity.toString().length > 0;
 
-    const formValidation = nameValidation || brandValidation || barcodeValidation || imageValidation || descriptionValidation || costValidation || priceValidation || quantityValidation;
+    const formValidation = nameValidation && brandValidation && barcodeValidation && imageValidation && descriptionValidation && costValidation && priceValidation && quantityValidation;
+
+    useEffect(() => {
+        console.log(formValidation)
+
+    }, [form])
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -33,9 +38,12 @@ function FormProduct({ value, onSubmit, isError }) {
         setForm(prevState => { return { ...prevState, [name]: value } })
     }
 
+
+
     return (
         <form onSubmit={async (e) => {
             e.preventDefault();
+            console.log(nameValidation);
             setIsLoading(true);
             await onSubmit(form);
             setIsLoading(false);
@@ -158,10 +166,10 @@ function FormProduct({ value, onSubmit, isError }) {
             }
             {!isLoading ?
                 <button
-                    disabled={formValidation}
+                    disabled={!formValidation}
                     type="submit"
                     className={`block w-full rounded-lg bg-indigo-600 
-                                ${formValidation ? "bg-slate-400" : ''}
+                                ${!formValidation ? "bg-slate-400" : ''}
                                 px-5 py-3 text-sm font-medium text-white`}
                 >
                     Submit

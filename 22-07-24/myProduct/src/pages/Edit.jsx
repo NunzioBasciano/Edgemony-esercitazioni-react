@@ -34,7 +34,7 @@ function Edit() {
             setIsLoading(true);
             const res = await editProduct({ ...value, id });
             console.log(res);
-            navigate('/');
+            navigate(`/products/${id}`);
         } catch (error) {
             console.log(error);
             setIsError({ message: error.message, isError: true });
