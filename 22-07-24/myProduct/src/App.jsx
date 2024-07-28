@@ -107,7 +107,7 @@ function App() {
                             to={`/edit/${product.id}`}
                             className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
                           >
-                            {labels.productTableEdit}
+                            {labels.productTableEditButton}
                           </NavLink>
                           <button
                             onClick={() => handleDelete(product.id)}
