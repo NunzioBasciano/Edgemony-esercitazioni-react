@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { labels } from "./assets/data/labels"
 import { getProductList } from './api/productClient'
 import { NavLink } from 'react-router-dom'
+import { deleteProduct } from "./api/productClient"
 
 function App() {
 
@@ -25,12 +26,26 @@ function App() {
     setFilter(event.target.value.toLowerCase());
   }
 
+  const handleDelete = async (id) => {
+    try {
+      const res = await deleteProduct(id);
+      console.log(res);
+      setIsLoading(true)
+      getProducts();
+
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log(id);
+  }
+
   useEffect(() => {
     getProducts();
   }, [])
 
   useEffect(() => {
-    console.log(productList);
+    /*    console.log(productList); */
   }, [productList])
 
 
@@ -94,6 +109,12 @@ function App() {
                           >
                             {labels.productTableEdit}
                           </NavLink>
+                          <button
+                            onClick={() => handleDelete(product.id)}
+                            className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                          >
+                            {labels.productTableDelete}
+                          </button>
 
                         </div>
                       </td>

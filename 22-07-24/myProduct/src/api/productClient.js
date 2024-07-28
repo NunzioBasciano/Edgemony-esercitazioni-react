@@ -83,6 +83,16 @@ export const editProduct = (body) => {
     })
 }
 
+export const deleteProduct = (id) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(
+                `L'elemento con ${id} è stato cancellato correttamente`
+            )
+        }, 3000)
+    })
+}
+
 
 // quando i dati del backend saranno pronti potremo sostituire la funzione di sopra con questa
 

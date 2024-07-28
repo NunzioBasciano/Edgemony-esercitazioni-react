@@ -30,11 +30,11 @@ function ProductDetailPage() {
     }, [id]);
 
     useEffect(() => {
-        console.log(product);
+        /*        console.log(product); */
     }, [product]);
 
     useEffect(() => {
-        console.log(isError);
+        /*       console.log(isError); */
     }, [isError]);
 
     if (isLoading) return <ProductSkeleton />;
