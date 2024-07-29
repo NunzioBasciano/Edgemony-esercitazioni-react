@@ -55,9 +55,9 @@ export const addProduct = async (body) => {
     }
 }
 
-export const editProduct = async (body) => {
+export const editProduct = async (body, id) => {
 
-    const id = self.crypto.randomUUID();
+
     const productNoDetail = {
         id,
         name: body.name,
@@ -70,7 +70,7 @@ export const editProduct = async (body) => {
 
     try {
 
-        await fetch(`http://localhost:3000/products/${body.id}`, {
+        await fetch(`http://localhost:3000/products/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ export const editProduct = async (body) => {
             body: JSON.stringify(productNoDetail)
         });
 
-        const data = await fetch(`http://localhost:3000/products-detail/${body.id}`, {
+        const data = await fetch(`http://localhost:3000/products-detail/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

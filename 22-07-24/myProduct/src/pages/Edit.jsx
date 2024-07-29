@@ -32,13 +32,13 @@ function Edit() {
     const handleEdit = async (body) => {
         try {
             setIsLoading(true);
-            const res = await editProduct({ ...body, id });
+            const res = await editProduct({ ...body }, id);
             toast.success(`The product ${body.name} was edited`, {
                 position: "top-right"
             });
             navigate(`/products/${id}`);
         } catch (error) {
-            toast.error(`it was not possible to delete the product ${body.name}`, {
+            toast.error(`it was not possible to edit the product ${body.name}`, {
                 position: "top-right"
             });
             setIsError({ message: error.message, isError: true });
