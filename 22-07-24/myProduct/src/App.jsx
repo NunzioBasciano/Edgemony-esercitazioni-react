@@ -17,7 +17,9 @@ function App() {
       setProductList(data);
 
     } catch (error) {
-      console.log(error);
+      toast.error(`Something get wrong!`, {
+        position: "top-right"
+      });
     } finally {
       setIsLoading(false);
     }
@@ -38,7 +40,9 @@ function App() {
       getProducts();
 
     } catch (error) {
-      console.log(error);
+      toast.error(`it was not possible to delete the product with id ${id}`, {
+        position: "top-right"
+      });
     }
 
     console.log(id);

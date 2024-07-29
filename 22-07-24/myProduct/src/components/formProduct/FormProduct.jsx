@@ -27,7 +27,6 @@ function FormProduct({ value, onSubmit, isError }) {
     const formValidation = nameValidation && brandValidation && barcodeValidation && imageValidation && descriptionValidation && costValidation && priceValidation && quantityValidation;
 
     useEffect(() => {
-        console.log(formValidation)
 
     }, [form])
 
@@ -38,12 +37,9 @@ function FormProduct({ value, onSubmit, isError }) {
         setForm(prevState => { return { ...prevState, [name]: value } })
     }
 
-
-
     return (
         <form onSubmit={async (e) => {
             e.preventDefault();
-            console.log(nameValidation);
             setIsLoading(true);
             await onSubmit(form);
             setIsLoading(false);

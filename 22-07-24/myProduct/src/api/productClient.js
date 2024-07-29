@@ -62,7 +62,7 @@ export const getProductDetail = () => {
             }; */
 
 export const addProduct = (body) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(
                 { ...body, id: self.crypto.randomUUID() }

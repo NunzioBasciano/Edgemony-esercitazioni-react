@@ -10,7 +10,6 @@ function Edit() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-
     const [product, setProduct] = useState(null);
     const [isError, setIsError] = useState({ message: "", isError: false });
     const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +40,9 @@ function Edit() {
             });
             navigate(`/products/${id}`);
         } catch (error) {
-            console.log(error);
+            toast.error(`it was not possible to delete the product ${body.name}`, {
+                position: "top-right"
+            });
             setIsError({ message: error.message, isError: true });
         }
     }
