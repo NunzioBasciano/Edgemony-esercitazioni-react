@@ -1,26 +1,46 @@
 {
   "products": [
     {
-      "id": "d5849a3f-d1be-461c-a133-94b3c497300d",
-      "name": "Fjallraven ",
-      "brand": "Foldsack ",
-      "barcode": "4554646454564",
-      "cost": "3.9",
-      "quantity": "12",
-      "price": "12.9"
+      "id": "204bf3e6-6def-4965-91da-5f9455345d69",
+      "name": "bascianociao",
+      "brand": "cascasc",
+      "barcode": "12221",
+      "cost": "21",
+      "quantity": "21",
+      "price": "21"
+    },
+    {
+      "id": "ffbe2855-7de2-4d0e-9f5f-86ee2abe37bd",
+      "name": "elisa",
+      "brand": "è bella",
+      "barcode": "69",
+      "cost": "69",
+      "quantity": "69",
+      "price": "69"
     }
   ],
   "products-detail": [
     {
-      "id": "d5849a3f-d1be-461c-a133-94b3c497300d",
-      "name": "Fjallraven ",
-      "brand": "Foldsack ",
-      "barcode": "4554646454564",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "cost": "3.9",
-      "price": "12.9",
-      "quantity": "12"
+      "name": "bascianociao",
+      "brand": "cascasc",
+      "barcode": "12221",
+      "image": "234ewe",
+      "description": "avddvq",
+      "cost": "21",
+      "price": "21",
+      "quantity": "21",
+      "id": "204bf3e6-6def-4965-91da-5f9455345d69"
+    },
+    {
+      "name": "elisa",
+      "brand": "è bella",
+      "barcode": "69",
+      "image": "ti piacerebbe",
+      "description": "moltissimo",
+      "cost": "69",
+      "price": "69",
+      "quantity": "69",
+      "id": "ffbe2855-7de2-4d0e-9f5f-86ee2abe37bd"
     }
   ]
 }
