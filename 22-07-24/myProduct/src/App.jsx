@@ -4,6 +4,7 @@ import { getProductList } from './api/productClient'
 import { NavLink } from 'react-router-dom'
 import { deleteProduct } from "./api/productClient"
 import { toast } from "react-toastify";
+import HomeSkeleton from './pages/HomeSkeleton'
 
 function App() {
 
@@ -57,7 +58,7 @@ function App() {
   }, [productList])
 
 
-  if (isLoading) return <p>{labels.isLoading}</p>
+  if (isLoading) return <HomeSkeleton />
   return (
     <>
       <div className="flex justify-center w-full">
