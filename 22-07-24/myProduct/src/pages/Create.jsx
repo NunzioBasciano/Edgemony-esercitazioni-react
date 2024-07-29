@@ -4,6 +4,7 @@ import { addProduct } from '../api/productClient'
 import { useNavigate } from 'react-router-dom'
 import FormProduct from '../components/formProduct/FormProduct'
 import { labels } from '../assets/data/labels'
+import { toast } from "react-toastify";
 
 
 function Create() {
@@ -12,10 +13,13 @@ function Create() {
 
     const [isError, setIsError] = useState({ message: "", isError: false });
 
-    const handleSubmit = async (value) => {
+    const handleCreate = async (body) => {
         try {
-            const res = await addProduct(value);
+            const res = await addProduct(body);
             console.log(res);
+            toast.success(`The product ${body.name} was created`, {
+                position: "top-right"
+            });
             navigate('/')
 
         } catch (error) {
@@ -29,7 +33,7 @@ function Create() {
             <div className="mx-auto max-w-lg">
                 <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">{labels.productTableCreate}</h1>
                 <FormProduct
-                    onSubmit={handleSubmit}
+                    onSubmit={handleCreate}
                     isError={isError}
                 />
             </div>

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { editProduct, getProductDetail } from "../api/productClient";
 import FormProduct from "../components/formProduct/FormProduct";
 import { useParams, useNavigate } from "react-router-dom";
+import { labels } from "../assets/data/labels";
+import { toast } from "react-toastify";
 
 function Edit() {
 
@@ -29,11 +31,14 @@ function Edit() {
         getProduct(id);
     }, []);
 
-    const handleSubmit = async (value) => {
+    const handleEdit = async (body) => {
         try {
             setIsLoading(true);
-            const res = await editProduct({ ...value, id });
+            const res = await editProduct({ ...body, id });
             console.log(res);
+            toast.success(`The product ${body.name} was edited`, {
+                position: "top-right"
+            });
             navigate(`/products/${id}`);
         } catch (error) {
             console.log(error);
@@ -49,7 +54,7 @@ function Edit() {
                 <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">{labels.productTableEdit}</h1>
                 <FormProduct
                     value={product}
-                    onSubmit={handleSubmit}
+                    onSubmit={handleEdit}
                     isError={isError}
                 />
             </div>

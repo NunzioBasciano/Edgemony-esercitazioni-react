@@ -3,6 +3,7 @@ import { labels } from "./assets/data/labels"
 import { getProductList } from './api/productClient'
 import { NavLink } from 'react-router-dom'
 import { deleteProduct } from "./api/productClient"
+import { toast } from "react-toastify";
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
   const handleDelete = async (id) => {
     try {
       const res = await deleteProduct(id);
+      toast.success(`The product with id ${id} was deleted`, {
+        position: "top-right"
+      });
       console.log(res);
       setIsLoading(true)
       getProducts();
