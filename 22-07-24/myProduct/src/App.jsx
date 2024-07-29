@@ -36,7 +36,6 @@ function App() {
       toast.success(`The product with id ${id} was deleted`, {
         position: "top-right"
       });
-      console.log(res);
       setIsLoading(true)
       getProducts();
 
@@ -45,8 +44,6 @@ function App() {
         position: "top-right"
       });
     }
-
-    console.log(id);
   }
 
   useEffect(() => {
@@ -54,7 +51,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    /*    console.log(productList); */
+
   }, [productList])
 
 

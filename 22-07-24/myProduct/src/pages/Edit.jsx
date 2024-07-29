@@ -19,7 +19,6 @@ function Edit() {
             const data = await getProductDetail(id);
             setProduct(data);
         } catch (error) {
-            console.log(error);
             setIsError({ message: error.message, isError: true });
         } finally {
             setIsLoading(false);
@@ -34,7 +33,6 @@ function Edit() {
         try {
             setIsLoading(true);
             const res = await editProduct({ ...body, id });
-            console.log(res);
             toast.success(`The product ${body.name} was edited`, {
                 position: "top-right"
             });

@@ -1,111 +1,109 @@
-export const getProductList = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(() => {
-                return [{
-                    id: 1,
-                    barcode: "1234567890",
-                    brand: "Revlon professional",
-                    name: "Uniq one",
-                    image: "https://www.hairbodystore.com/7013-large_default/rp-unique-one-classico-150-ml.jpg",
-                    description: `TRATTAMENTO PER CAPELLI TUTTO IN UNO Innovazione mondiale nella cura dei capelli. La prima maschera spray senza risciacquo disponibile sul mercato che offre ai capelli 10 BENEFICI fondamentali di cui hanno bisogno.`,
-                    cost: 3.4,
-                    price: 12.9,
-                    quantity: 12
-                },
-                {
-                    id: 2,
-                    barcode: "1234567890",
-                    brand: "Revlon professional",
-                    name: "Uniq one green tea",
-                    image: "#",
-                    description: `Revlon Professional UniqONE Green Tea Scent Hair Treatment è un trattamento che racchiude 10 benefici reali in un solo prodotto con una fresca e profumata fragranza al Thé Verde. Ideale per capelli secchi e danneggiati da fattori ambientali o chimici come trattamento di riparazione della fibra, apportando estrema lucentezza ed eliminando l'effetto crespo per ciocche favolosamente morbide.`,
-                    cost: 3.4,
-                    price: 12.9,
-                    quantity: 10
-                }]
-            })
-        }, 1000)
-    })
+export const getProductList = async () => {
+    try {
+        const data = await fetch("http://localhost:3000/products");
+        return data.json();
+
+    } catch (error) {
+        throw Error(error.message);
+    }
 }
 
-export const getProductDetail = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-/*             reject({ message: 'Non è stato possibile caricare i dettagli del prodotto' })
- */            resolve(() => {
-            return {
-                id: 1,
-                barcode: "1234567890",
-                brand: "Revlon professional",
-                name: "Uniq one",
-                image: "https://www.hairbodystore.com/7013-large_default/rp-unique-one-classico-150-ml.jpg",
-                description: `TRATTAMENTO PER CAPELLI TUTTO IN UNO Innovazione mondiale nella cura dei capelli. La prima maschera spray senza risciacquo disponibile sul mercato che offre ai capelli 10 BENEFICI fondamentali di cui hanno bisogno.`,
-                cost: 3.4,
-                price: 12.9,
-                quantity: 12,
-            }
-        })
-        }, 1000)
-    })
-}
-
-
-// simulazione reject per test ErrorPage
-
-/* export const getProductDetail = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            reject({ message: 'Non è stato possibile caricare i dettagli del prodotto' });
-            }, 1000);
-            });
-            }; */
-
-export const addProduct = (body) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(
-                { ...body, id: self.crypto.randomUUID() }
-            );
-        }, 1000);
-    });
-}
-
-export const editProduct = (body) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(
-                {
-                    ...body,
-                }
-            )
-        }, 3000)
-    })
-}
-
-export const deleteProduct = (id) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(
-                `L'elemento con ${id} è stato cancellato correttamente`
-            )
-        }, 3000)
-    })
-}
-
-
-// quando i dati del backend saranno pronti potremo sostituire la funzione di sopra con questa
-
-/* export const getProductList = async () => {
+export const getProductDetail = async (id) => {
 
     try {
-        const data = await fetch(
-            `https://jsonplaceholder.typicode.com/users`
-        );
-        const res = await data.json();
-        return res;
-    } catch (error) {
+        const data = await fetch(`http://localhost:3000/products-detail/${id}`);
+        return data.json();
 
-        console.log(error);
+    } catch (error) {
+        throw Error(error.message);
     }
-}   */
+}
+
+export const addProduct = async (body) => {
+
+    const id = self.crypto.randomUUID();
+    const productNoDetail = {
+        id,
+        name: body.name,
+        brand: body.brand,
+        barcode: body.barcode,
+        cost: body.cost,
+        quantity: body.quantity,
+        price: body.price
+    }
+
+    try {
+        await fetch(`http://localhost:3000/products`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productNoDetail)
+        });
+
+        const data = await fetch(`http://localhost:3000/products-detail`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id, ...body })
+        });
+        return data.json();
+
+    } catch (error) {
+        throw Error(error.message);
+    }
+}
+
+export const editProduct = async (body) => {
+
+    const id = self.crypto.randomUUID();
+    const productNoDetail = {
+        id,
+        name: body.name,
+        brand: body.brand,
+        barcode: body.barcode,
+        cost: body.cost,
+        quantity: body.quantity,
+        price: body.price
+    }
+
+    try {
+
+        await fetch(`http://localhost:3000/products/${body.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productNoDetail)
+        });
+
+        const data = await fetch(`http://localhost:3000/products-detail/${body.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+        return data.json();
+
+    } catch (error) {
+        throw Error(error.message);
+    }
+}
+
+export const deleteProduct = async (id) => {
+    try {
+        await fetch(`http://localhost:3000/products/${id}`, {
+            method: 'DELETE',
+        });
+        const data = await fetch(`http://localhost:3000/products-detail/${id}`, {
+            method: 'DELETE',
+        });
+        return data.json();
+
+    } catch (error) {
+        throw Error(error.message);
+    }
+}
+

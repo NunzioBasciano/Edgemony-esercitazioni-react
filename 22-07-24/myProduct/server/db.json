@@ -1,0 +1,26 @@
+{
+  "products": [
+    {
+      "id": "d5849a3f-d1be-461c-a133-94b3c497300d",
+      "name": "Fjallraven ",
+      "brand": "Foldsack ",
+      "barcode": "4554646454564",
+      "cost": "3.9",
+      "quantity": "12",
+      "price": "12.9"
+    }
+  ],
+  "products-detail": [
+    {
+      "id": "d5849a3f-d1be-461c-a133-94b3c497300d",
+      "name": "Fjallraven ",
+      "brand": "Foldsack ",
+      "barcode": "4554646454564",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+      "cost": "3.9",
+      "price": "12.9",
+      "quantity": "12"
+    }
+  ]
+}

@@ -17,7 +17,6 @@ function ProductDetailPage() {
             setProduct(data);
             setIsLoading(false);
         } catch (error) {
-            console.log(error);
             setIsLoading(false);
             setIsError({ message: error.message, isError: true });
         }
@@ -28,14 +27,6 @@ function ProductDetailPage() {
             getProduct(id);
         }
     }, [id]);
-
-    useEffect(() => {
-        /*        console.log(product); */
-    }, [product]);
-
-    useEffect(() => {
-        /*       console.log(isError); */
-    }, [isError]);
 
     if (isLoading) return <ProductSkeleton />;
     if (isError.isError) {
