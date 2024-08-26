@@ -8,15 +8,6 @@
       "cost": "21",
       "quantity": "21",
       "price": "21"
-    },
-    {
-      "id": "ffbe2855-7de2-4d0e-9f5f-86ee2abe37bd",
-      "name": "elisa",
-      "brand": "è bella",
-      "barcode": "69",
-      "cost": "69",
-      "quantity": "69",
-      "price": "69"
     }
   ],
   "products-detail": [
@@ -30,17 +21,6 @@
       "price": "21",
       "quantity": "21",
       "id": "204bf3e6-6def-4965-91da-5f9455345d69"
-    },
-    {
-      "name": "elisa",
-      "brand": "è bella",
-      "barcode": "69",
-      "image": "ti piacerebbe",
-      "description": "moltissimo",
-      "cost": "69",
-      "price": "69",
-      "quantity": "69",
-      "id": "ffbe2855-7de2-4d0e-9f5f-86ee2abe37bd"
     }
   ]
 }
