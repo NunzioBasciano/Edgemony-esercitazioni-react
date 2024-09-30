@@ -13,7 +13,7 @@ function FormProduct({ value, onSubmit, isError }) {
         price: value?.price || '',
         quantity: value?.quantity || ''
     }
-    //add comment
+
     const [form, setForm] = useState(initialState)
     const [isLoading, setIsLoading] = useState(false);
 
