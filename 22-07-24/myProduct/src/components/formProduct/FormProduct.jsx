@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+// The FormProduct component receives three props: 
+// 'value' for initial form values, 'onSubmit' for handling form submission, and 'isError' to display errors.
 function FormProduct({ value, onSubmit, isError }) {
     const initialState = {
         name: value?.name || '',

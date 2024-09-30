@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from 'react'
 
 export default function Home() {
   const [input, setInput] = useState('');
@@ -21,6 +21,7 @@ export default function Home() {
   return (
     <div>
       <h1>Conta Caratteri</h1>
+
       <textarea
         value={input}
         onChange={handleInputChange}
